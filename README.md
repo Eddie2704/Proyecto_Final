@@ -1,7 +1,7 @@
 
 Integrantes:
 
-Justin Eliel Perdomo Marquez
+Justin Eliel Perdomo Marquez - 20232000576
 
 Eddie Alejandro Merino Fuentes
 
