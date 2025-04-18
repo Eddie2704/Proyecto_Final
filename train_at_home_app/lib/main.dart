@@ -16,6 +16,8 @@ await Firebase.initializeApp(
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
 
 // Detalle de Rutina
 class RoutineDetailScreen extends StatelessWidget {
+  const RoutineDetailScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,6 +67,8 @@ class RoutineDetailScreen extends StatelessWidget {
 
 // Temporizador / Cronómetro
 class TimerScreen extends StatelessWidget {
+  const TimerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +80,8 @@ class TimerScreen extends StatelessWidget {
 
 // Crear Nueva Rutina
 class CreateRoutineScreen extends StatelessWidget {
+  const CreateRoutineScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
