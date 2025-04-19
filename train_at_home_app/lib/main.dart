@@ -90,10 +90,3 @@ class CreateRoutineScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
