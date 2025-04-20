@@ -66,3 +66,19 @@ class TimerScreen extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+// Crear Nueva Rutina
+class CreateRoutineScreen extends StatelessWidget {
+  const CreateRoutineScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Crear Rutina')),
+      body: Center(child: Text('Formulario para crear rutina')),
+    );
+  }
+}
+>>>>>>> 11d7b8d518babf9f1e63f2cdcb078a33b207f555
