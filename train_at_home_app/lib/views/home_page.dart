@@ -28,6 +28,10 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey[900],
+        unselectedItemColor: Colors.grey[300],
+        selectedItemColor: Colors.greenAccent[400],
+        
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Progreso'),
           BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Rutinas'),

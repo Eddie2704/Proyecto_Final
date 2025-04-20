@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:trainathomeapp/models/rutinas.dart';
+import 'package:trainathomeapp/views/create_routine_screen.dart';
+import 'package:trainathomeapp/views/detalle_rutinas.dart';
 import 'package:trainathomeapp/views/home_page.dart';
 import 'package:trainathomeapp/views/journal_display.dart';
 import 'package:trainathomeapp/views/profile_screen.dart';
-import 'package:trainathomeapp/views/progress_screen.dart';
-import 'firebase_options.dart';
+import 'package:trainathomeapp/views/progress_screen.dart'; // Asegúrate de importar Rutina
 
-void main() async {
-  // Initializar Firebase
-  WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,45 +18,38 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TrainAtHome',
-      //home: MainPage(),
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {
-        '/': (context) => HomePage(),
-        '/routineDetail': (_) => RoutineDetailScreen(),
-        '/timer': (_) => TimerScreen(),
-        '/createRoutine': (_) => CreateRoutineScreen(),
-        '/progress': (_) => ProgressScreen(),
-        '/profile': (_) => ProfileScreen(),
-        '/journal': (_) => JournalDisplay(),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/detalle') {
+          final rutina = settings.arguments as Rutina;
+          return MaterialPageRoute(
+            builder: (context) => DetalleRutinas(rutina: rutina),
+          );
+        }
+
+        // Otras rutas estáticas
+        final routes = {
+          '/': (context) => const HomePage(),
+          '/timer': (_) => TimerScreen(),
+          '/createRoutine': (context) => const CreateRoutineScreen(),
+          '/progress': (context) =>  ProgressScreen(),
+          '/profile': (context) => const ProfileScreen(),
+          '/journal': (context) => const JournalDisplay(),
+        };
+
+        final builder = routes[settings.name];
+        if (builder != null) {
+          return MaterialPageRoute(builder: builder);
+        }
+
+        // Ruta no encontrada
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(child: Text('Ruta no encontrada')),
+          ),
+        );
       },
-    );
-  }
-}
-
-
-
-
-// Detalle de Rutina
-class RoutineDetailScreen extends StatelessWidget {
-  const RoutineDetailScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Detalle de Rutina')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Ejercicios de la rutina'),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/timer'),
-              child: Text('Iniciar Temporizador'),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -77,23 +66,3 @@ class TimerScreen extends StatelessWidget {
     );
   }
 }
-
-// Crear Nueva Rutina
-class CreateRoutineScreen extends StatelessWidget {
-  const CreateRoutineScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Crear Rutina')),
-      body: Center(child: Text('Formulario para crear rutina')),
-    );
-  }
-}
-
-
-
-
-
-
-
