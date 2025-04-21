@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trainathomeapp/models/rutinas.dart';
 
 class DetalleRutinas extends StatelessWidget {
-  final Rutina rutina; // Rutina recibida como parámetro
+  final Rutina rutina;
 
   const DetalleRutinas(
           {Key? key, required this.rutina} ) : super(key: key);
@@ -30,11 +30,11 @@ class DetalleRutinas extends StatelessWidget {
                   fontWeight: FontWeight.bold)
             ),
             const SizedBox(height: 10),
-            // Aquí podrías agregar una lista de ejercicios basada en la rutina
+            
 
             ListView.builder(
               shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(), // para que no interfiera con el scroll principal
+              physics: const NeverScrollableScrollPhysics(), 
               itemCount: rutina.ejercicios.length,
               itemBuilder: (context, index) {
                 final ejercicio = rutina.ejercicios[index];
@@ -53,10 +53,7 @@ class DetalleRutinas extends StatelessWidget {
                     ),
                   );
               },
-            ),
-
-
-          ],
+            ),],
         ),
       ),
     );

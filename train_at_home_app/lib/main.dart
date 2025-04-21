@@ -5,12 +5,12 @@ import 'package:trainathomeapp/models/rutinas.dart';
 import 'package:trainathomeapp/providers/journal_provider.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
 //pantallas
-import 'package:trainathomeapp/views/create_routine_screen.dart';
-import 'package:trainathomeapp/views/detalle_rutinas.dart';
-import 'package:trainathomeapp/views/home_page.dart';
-import 'package:trainathomeapp/views/journal_screen.dart';
-import 'package:trainathomeapp/views/profile_screen.dart';
-import 'package:trainathomeapp/views/progress_screen.dart'; 
+import 'package:trainathomeapp/views/create_routine_screen.dart'; //pantalla Creacion de rutinas
+import 'package:trainathomeapp/views/detalle_rutinas.dart'; // pantalla Detalle de rutinas
+import 'package:trainathomeapp/views/home_page.dart'; // pantalla principal
+import 'package:trainathomeapp/views/journal_screen.dart'; // pantalla Journal
+import 'package:trainathomeapp/views/profile_screen.dart'; // pantalla Perfil
+import 'package:trainathomeapp/views/progress_screen.dart'; // pantalla Progreso
 //firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:trainathomeapp/firebase_options.dart';
