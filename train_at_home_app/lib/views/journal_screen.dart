@@ -27,15 +27,20 @@ class JournalScreen extends StatelessWidget {
         itemCount: dias.length,
         itemBuilder: (context, index) {
           final dia = dias[index];
-          final rutina = rutinasAsignadas[dia];
+          final rutinas = rutinasAsignadas[dia] ?? [];
 
           return Card(
+            color: Colors.grey[550],
+            shadowColor: Colors.grey[900],
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: ListTile(
               title: Text(dia),
-              subtitle: Text(rutina?.name ?? 'Sin rutina asignada'),
+              subtitle: rutinas.isNotEmpty
+                  ? Text(rutinas.map((r) => r.name).join(", "))
+                  : const Text('Sin rutinas asignadas'),
               trailing: IconButton(
                 icon: const Icon(Icons.add),
+                color: Colors.greenAccent[400],
                 onPressed: () {
                   showModalBottomSheet(
                     context: context,
@@ -56,9 +61,42 @@ class JournalScreen extends StatelessWidget {
                   );
                 },
               ),
-              onLongPress: rutina != null
-                  ? () => context.read<JournalProvider>().quitarRutina(dia)
-                  : null,
+            onLongPress: rutinas.isNotEmpty
+    ? () {
+        showModalBottomSheet(
+          context: context,
+          builder: (_) {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListView(
+                  shrinkWrap: true,
+                  children: rutinas.map((r) {
+                    return ListTile(
+                      title: Text(r.name),
+                      subtitle: Text('${r.type} - ${r.time} min'),
+                      trailing: const Icon(Icons.delete, color: Colors.red),
+                      onTap: () {
+                        context.read<JournalProvider>().quitarRutina(dia, r);
+                        Navigator.pop(context);
+                      },
+                    );
+                  }).toList(),
+                ),
+                const Divider(),
+                TextButton(
+                  onPressed: () {
+                    context.read<JournalProvider>().borrarTodasRutinas(dia);
+                    Navigator.pop(context);
+                  },
+                  child: const Text("Eliminar todas las rutinas", style: TextStyle(color: Colors.red)),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    : null,
             ),
           );
         },
