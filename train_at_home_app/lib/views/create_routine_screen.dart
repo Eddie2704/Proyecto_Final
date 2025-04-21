@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
-import 'package:trainathomeapp/models/rutinas.dart';
 
 class CreateRoutineScreen extends StatefulWidget {
   const CreateRoutineScreen({Key? key}) : super(key: key);
 
   @override
   _CreateRoutineScreenState createState() => _CreateRoutineScreenState();
-}
+} 
 
 class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
   final _formKey = GlobalKey<FormState>();
