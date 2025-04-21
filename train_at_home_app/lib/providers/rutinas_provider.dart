@@ -1,4 +1,8 @@
-final List<Map<String, dynamic>> rutinas = [
+import 'package:flutter/material.dart';
+
+class RutinasProvider with ChangeNotifier {
+
+final List<Map<String, dynamic>> _rutinas = [
   {
     "id": "1",
     "name": "Cardio explosivo",
@@ -220,3 +224,13 @@ final List<Map<String, dynamic>> rutinas = [
     ]
   }
 ];
+  List<Map<String, dynamic>> get rutinas => [..._rutinas];
+
+  Map<String, dynamic>? getRutinaById(String id) {
+    try {
+      return _rutinas.firstWhere((rutina) => rutina['id'] == id);
+    } catch (e) {
+      return null;
+    }
+  }
+}

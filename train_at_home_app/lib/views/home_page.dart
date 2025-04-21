@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:trainathomeapp/views/profile_screen.dart';
 import 'package:trainathomeapp/views/progress_screen.dart';
 import 'package:trainathomeapp/views/routines_screens.dart';
-import 'package:trainathomeapp/views/journal_display.dart';
+import 'package:trainathomeapp/views/journal_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     ProgressScreen(),
     RoutinesScreen(),
-    JournalDisplay(),
+    JournalScreen(),
     ProfileScreen(),
   ];
 

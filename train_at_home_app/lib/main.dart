@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
+//providers
+import 'package:provider/provider.dart';
 import 'package:trainathomeapp/models/rutinas.dart';
+import 'package:trainathomeapp/providers/journal_provider.dart';
+import 'package:trainathomeapp/providers/rutinas_provider.dart';
+//pantallas
 import 'package:trainathomeapp/views/create_routine_screen.dart';
 import 'package:trainathomeapp/views/detalle_rutinas.dart';
 import 'package:trainathomeapp/views/home_page.dart';
-import 'package:trainathomeapp/views/journal_display.dart';
+import 'package:trainathomeapp/views/journal_screen.dart';
 import 'package:trainathomeapp/views/profile_screen.dart';
-import 'package:trainathomeapp/views/progress_screen.dart'; // Asegúrate de importar Rutina
+import 'package:trainathomeapp/views/progress_screen.dart'; 
+//firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'package:trainathomeapp/firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+ 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );  
+  runApp( MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RutinasProvider()),
+        ChangeNotifierProvider(create: (_) => JournalProvider()),
+      ],
+      child: const MyApp(),
+    ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -31,11 +50,10 @@ class MyApp extends StatelessWidget {
         // Otras rutas estáticas
         final routes = {
           '/': (context) => const HomePage(),
-          '/timer': (_) => TimerScreen(),
           '/createRoutine': (context) => const CreateRoutineScreen(),
           '/progress': (context) =>  ProgressScreen(),
           '/profile': (context) => const ProfileScreen(),
-          '/journal': (context) => const JournalDisplay(),
+          '/journal': (context) => const JournalScreen(),
         };
 
         final builder = routes[settings.name];
@@ -54,15 +72,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Temporizador / Cronómetro
-class TimerScreen extends StatelessWidget {
-  const TimerScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Temporizador')),
-      body: Center(child: Text('Aquí va el temporizador / cronómetro')),
-    );
-  }
-}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:trainathomeapp/models/rutinas.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
 
@@ -7,6 +8,8 @@ class RoutinesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final rutinasProvider = Provider.of<RutinasProvider>(context);
+    final rutinas = rutinasProvider.rutinas;
     return Scaffold(
       appBar: AppBar(
         title: Text('TrainAtHome'),
