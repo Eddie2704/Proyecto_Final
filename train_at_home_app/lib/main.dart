@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 //providers
 import 'package:provider/provider.dart';
 import 'package:trainathomeapp/models/rutinas.dart';
+import 'package:trainathomeapp/providers/cronometro_provider.dart';
 import 'package:trainathomeapp/providers/journal_provider.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
+import 'package:trainathomeapp/providers/temporizador_provider.dart';
 //pantallas
 import 'package:trainathomeapp/views/create_routine_screen.dart'; //pantalla Creacion de rutinas
 import 'package:trainathomeapp/views/detalle_rutinas.dart'; // pantalla Detalle de rutinas
@@ -17,7 +19,7 @@ import 'package:trainathomeapp/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+  // Inicializa Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );  
@@ -25,6 +27,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => RutinasProvider()),
         ChangeNotifierProvider(create: (_) => JournalProvider()),
+        ChangeNotifierProvider(create: (_) => CronometroProvider()),
+        ChangeNotifierProvider(create: (_) => TemporizadorProvider()),
       ],
       child: const MyApp(),
     ),);

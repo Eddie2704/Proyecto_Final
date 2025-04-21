@@ -13,7 +13,7 @@ class RoutinesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('TrainAtHome'),
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.indigo[900],
         foregroundColor: Colors.grey[300],
         
       ),
@@ -101,7 +101,8 @@ class RoutinesScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.yellow[400],
+        foregroundColor: Colors.black,
         onPressed: () => Navigator.pushNamed(context, '/createRoutine'),
         child: Icon(Icons.add, color: Colors.grey[900],),
         
