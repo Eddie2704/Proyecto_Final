@@ -95,46 +95,69 @@ class JournalScreen extends StatelessWidget {
           ),
           //Boton para eliminar rutinas de los dias
         floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.yellow[400],
-        foregroundColor: Colors.black,
-        child: const Icon(Icons.delete),
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (_) {
-              return ListView(
-                children: dias.map((dia) {
-                  final rutinas = rutinasAsignadas[dia] ?? [];
-                  return rutinas.isNotEmpty
-                      ? ExpansionTile(
-                          title: Text(dia),
-                          children: [
-                            ...rutinas.map((r) => ListTile(
-                                  title: Text(r.name),
-                                  subtitle: Text('${r.type} - ${r.time} min'),
-                                  trailing: const Icon(Icons.delete, color: Colors.red),
-                                  onTap: () {
-                                    context.read<JournalProvider>().quitarRutina(dia, r);
-                                    Navigator.pop(context);
-                                  },
-                                )),
-                            const Divider(),
-                            TextButton(
-                              onPressed: () {
-                                context.read<JournalProvider>().borrarTodasRutinas(dia);
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Eliminar todas", style: TextStyle(color: Colors.red)),
-                            ),
-                          ],
-                        )
-                      : const SizedBox();
-                }).toList(),
-              );
+  backgroundColor: Colors.yellow[400],
+  foregroundColor: Colors.black,
+  child: const Icon(Icons.delete),
+  onPressed: () {
+    showModalBottomSheet(
+  context: context,
+  builder: (_) {
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        mainAxisSize: MainAxisSize.min, // ✅ Evita que ocupe toda la pantalla
+        children: [
+          Expanded( // ✅ Mantiene la lista en la parte superior
+            child: ListView(
+              children: dias.map((dia) {
+                final rutinas = rutinasAsignadas[dia] ?? [];
+                return rutinas.isNotEmpty
+                    ? ExpansionTile(
+                        title: Text(dia),
+                        children: [
+                          ...rutinas.map((r) => ListTile(
+                                title: Text(r.name),
+                                subtitle: Text('${r.type} - ${r.time} min'),
+                                trailing: const Icon(Icons.delete, color: Colors.red),
+                                onTap: () {
+                                  context.read<JournalProvider>().quitarRutina(dia, r);
+                                  Navigator.pop(context);
+                                },
+                              )),
+                          const Divider(),
+                          TextButton(
+                            onPressed: () {
+                              context.read<JournalProvider>().borrarTodasRutinas(dia);
+                              Navigator.pop(context);
+                            },
+                            child: const Text("Eliminar todas en este día", style: TextStyle(color: Colors.red)),
+                          ),
+                        ],
+                      )
+                    : const SizedBox();
+              }).toList(),
+            ),
+          ),
+          const Divider(), //Separador entre la lista y el botón
+          //Botón  abajo para eliminar las rutinas de Todos los días
+          TextButton(
+            onPressed: () {
+              context.read<JournalProvider>().borrarTodasLasRutinasDeTodosLosDias();
+              Navigator.pop(context);
             },
-          );
-        },
+            child: const Text(
+              "Eliminar todas las rutinas",
+              style: TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
       ),
+      );
+    },
+  );
+}
+),
+
     );
   }
 }

@@ -15,11 +15,8 @@ class WidgetCronometro extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.blueGrey[900], // 🔹 Fondo oscuro elegante
+            color: Colors.blueGrey[900], 
             borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(color: Colors.grey[600]!.withOpacity(0.5), blurRadius: 8, spreadRadius: 2),
-            ],
           ),
           child: Column(
             children: [
@@ -28,7 +25,7 @@ class WidgetCronometro extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: Colors.cyanAccent[400], // 🔹 Texto vibrante
+                  color: Colors.cyanAccent[400], 
                 ),
               ),
               const SizedBox(height: 16),
