@@ -63,7 +63,7 @@ class JournalScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:  Colors.grey[550], 
                             borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.grey[700]!, width: 1),
+                            border: Border.all(color: Colors.indigo.shade400, width: 1),
                           ),
                           margin: const EdgeInsets.symmetric(vertical: 8), 
                           padding: const EdgeInsets.all(12),
