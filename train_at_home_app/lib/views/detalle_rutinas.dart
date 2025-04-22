@@ -6,7 +6,7 @@ class DetalleRutinas extends StatelessWidget {
   final Rutina rutina;
 
   const DetalleRutinas(
-          {Key? key, required this.rutina} ) : super(key: key);
+          {super.key, required this.rutina} );
 
   @override
   Widget build(BuildContext context) {

@@ -41,6 +41,13 @@ class JournalProvider with ChangeNotifier {
   }
 
 
+void borrarTodasLasRutinasDeTodosLosDias() {
+  _rutinasAsignadas.clear(); 
+  _guardarRutinas(); 
+  notifyListeners(); 
+}
+
+
   Future<void> _guardarRutinas() async {
     final prefs = await SharedPreferences.getInstance();
     final rutinasMap = _rutinasAsignadas.map((key, value) => MapEntry(

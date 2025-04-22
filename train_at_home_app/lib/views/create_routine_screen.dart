@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
 
 class CreateRoutineScreen extends StatefulWidget {
-  const CreateRoutineScreen({Key? key}) : super(key: key);
+  const CreateRoutineScreen({super.key});
 
   @override
-  _CreateRoutineScreenState createState() => _CreateRoutineScreenState();
+  CreateRoutineScreenState createState() => CreateRoutineScreenState();
 } 
 
-class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
+class CreateRoutineScreenState extends State<CreateRoutineScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _typeController = TextEditingController();
