@@ -17,7 +17,9 @@ class WidgetTemporizador extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.grey[550], 
-            borderRadius: BorderRadius.circular(16), 
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.indigoAccent.shade400, width: 1),
+
           ),
           child: Column(
             children: [
@@ -26,7 +28,7 @@ class WidgetTemporizador extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: Colors.cyanAccent[400], 
+                  color: Colors.indigo[400], 
                 ),
               ),
               const SizedBox(height: 16),
@@ -38,7 +40,7 @@ class WidgetTemporizador extends StatelessWidget {
                 label: const Text('Ajustar tiempo'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent[400], 
-                  foregroundColor: Colors.black, 
+                  foregroundColor: Colors.white, 
                 ),
               ),
 
@@ -47,16 +49,16 @@ class WidgetTemporizador extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    icon: Icon(temporizador.isRunning ? Icons.pause_circle_filled : Icons.play_circle_fill),
+                    icon: Icon(temporizador.isPaused ? Icons.play_circle_fill : Icons.pause_circle_filled),
                     iconSize: 48,
-                    color: Colors.greenAccent[400], 
-                    onPressed: temporizador.isRunning ? temporizador.pausar : temporizador.iniciar,
+                    color: Colors.indigo[400], 
+                    onPressed: temporizador.isPaused ? temporizador.iniciar : temporizador.pausar, // ✅ Ahora controla `isPaused`
                   ),
                   const SizedBox(width: 20),
                   IconButton(
                     icon: const Icon(Icons.replay),
                     iconSize: 48,
-                    color: Colors.orangeAccent[400], 
+                    color: Colors.orangeAccent, 
                     onPressed: temporizador.reiniciar,
                   ),
                 ],
@@ -76,12 +78,12 @@ class WidgetTemporizador extends StatelessWidget {
       builder: (_) {
         return Container(
           padding: const EdgeInsets.all(16),
-          color: Colors.blueGrey[900], 
+          color: Colors.grey[850], 
           child: Column(
             children: [
               Text(
                 'Selecciona el tiempo',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.cyanAccent[400]), // 🔹 Texto vibrante
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white10), 
               ),
               Expanded(
                 child: Row(
@@ -100,7 +102,7 @@ class WidgetTemporizador extends StatelessWidget {
                   }
                   Navigator.pop(context);
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orangeAccent[400]),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orangeAccent),
                 child: const Text('Aceptar', style: TextStyle(color: Colors.black)), 
               ),
               const SizedBox(height: 8),
@@ -122,7 +124,7 @@ class WidgetTemporizador extends StatelessWidget {
           return Center(
             child: Text(
               '$val $label',
-              style: TextStyle(color: Colors.cyanAccent[400]), 
+              style: TextStyle(color: Colors.white, fontSize: 30), 
             ),
           );
         }),

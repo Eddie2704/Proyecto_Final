@@ -15,9 +15,9 @@ class HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    ProgressScreen(),
     RoutinesScreen(),
     JournalScreen(),
+    ProgressScreen(),
     ProfileScreen(),
   ];
 
@@ -32,10 +32,10 @@ class HomePageState extends State<HomePage> {
         unselectedItemColor: Colors.grey[300],
         selectedItemColor: Colors.greenAccent[400],
         
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Progreso'),
+        items: [ 
           BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Rutinas'),
           BottomNavigationBarItem(icon: Icon(Icons.calendar_today), label: 'Planificador'),
+          BottomNavigationBarItem(icon: Icon(Icons.show_chart), label: 'Progreso'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
         ],
         onTap: (index) {

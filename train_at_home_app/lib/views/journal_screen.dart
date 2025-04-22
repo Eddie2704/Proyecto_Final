@@ -31,7 +31,7 @@ class JournalScreen extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
-              side: BorderSide(color: Colors.grey[700]!, width: 1),
+              side: BorderSide(color: Colors.indigo.shade400, width: 1),
             ),
             child: ListTile(
               title: Text(dia),
@@ -94,14 +94,14 @@ class JournalScreen extends StatelessWidget {
             },
           ),
           //Boton para eliminar rutinas de los dias
-        floatingActionButton: FloatingActionButton(
-  backgroundColor: Colors.yellow[400],
-  foregroundColor: Colors.black,
-  child: const Icon(Icons.delete),
-  onPressed: () {
-    showModalBottomSheet(
-  context: context,
-  builder: (_) {
+          floatingActionButton: FloatingActionButton(
+    backgroundColor: Colors.yellow[400],
+    foregroundColor: Colors.black,
+    child: const Icon(Icons.delete),
+    onPressed: () {
+      showModalBottomSheet(
+    context: context,
+    builder: (_) {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: Column(
