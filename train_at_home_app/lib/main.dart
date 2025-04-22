@@ -8,6 +8,7 @@ import 'package:trainathomeapp/providers/rutinas_provider.dart';
 import 'package:trainathomeapp/providers/temporizador_provider.dart';
 //pantallas
 import 'package:trainathomeapp/views/create_routine_screen.dart'; //pantalla Creacion de rutinas
+import 'package:trainathomeapp/views/cronometro_screen.dart';
 import 'package:trainathomeapp/views/detalle_rutinas.dart'; // pantalla Detalle de rutinas
 import 'package:trainathomeapp/views/home_page.dart'; // pantalla principal
 import 'package:trainathomeapp/views/journal_screen.dart'; // pantalla Journal
@@ -30,7 +31,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => CronometroProvider()),
         ChangeNotifierProvider(create: (_) => TemporizadorProvider()),
       ],
-      child: const MyApp(),
+      child:  MyApp(),
     ),);
 }
 
@@ -53,11 +54,13 @@ class MyApp extends StatelessWidget {
 
         // Otras rutas estáticas
         final routes = {
-          '/': (context) => const HomePage(),
-          '/createRoutine': (context) => const CreateRoutineScreen(),
+          '/': (context) =>  HomePage(),
+          '/createRoutine': (context) =>  CreateRoutineScreen(),
           '/progress': (context) =>  ProgressScreen(),
-          '/profile': (context) => const ProfileScreen(),
-          '/journal': (context) => const JournalScreen(),
+          '/profile': (context) =>  ProfileScreen(),
+          '/cronometro': (context) =>  CronometroScreen(),
+          '/journal': (context) =>  JournalScreen()
+          
         };
 
         final builder = routes[settings.name];
@@ -67,7 +70,7 @@ class MyApp extends StatelessWidget {
 
         // Ruta no encontrada
         return MaterialPageRoute(
-          builder: (context) => const Scaffold(
+          builder: (context) =>  Scaffold(
             body: Center(child: Text('Ruta no encontrada')),
           ),
         );

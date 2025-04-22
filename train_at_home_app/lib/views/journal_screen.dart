@@ -17,7 +17,7 @@ class JournalScreen extends StatelessWidget {
       'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
       return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi semana'),
+        title: Text('Mi semana'),
         backgroundColor: Colors.indigo[900],
         foregroundColor: Colors.grey[300],
       ),
@@ -28,7 +28,7 @@ class JournalScreen extends StatelessWidget {
           final rutinas = rutinasAsignadas[dia] ?? [];
           return Card(
             color: Colors.grey[550],
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
               side: BorderSide(color: Colors.indigo.shade400, width: 1),
@@ -37,9 +37,9 @@ class JournalScreen extends StatelessWidget {
               title: Text(dia),
               subtitle: rutinas.isNotEmpty
                   ? Text(rutinas.map((r) => r.name).join(", "))
-                  : const Text('Sin rutinas asignadas'),
+                  : Text('Sin rutinas asignadas'),
               trailing: IconButton(
-                icon: const Icon(Icons.add),
+                icon: Icon(Icons.add),
                 color: Colors.greenAccent[400],
                 //Añadir rutinas a los dias
                 onPressed: () {
@@ -47,10 +47,10 @@ class JournalScreen extends StatelessWidget {
                     context: context,
                     builder: (_) {
                     return Padding(
-                      padding: const EdgeInsets.all(12),
+                      padding: EdgeInsets.all(12),
                       child: ListView.separated(
                       itemCount: rutinasDisponibles.length,
-                        separatorBuilder: (_, __) => const Divider(color: Colors.grey, thickness: 0.5), 
+                        separatorBuilder: (_, __) => Divider(color: Colors.grey, thickness: 0.5), 
                         itemBuilder: (_, index) {
                         final r = rutinasDisponibles[index];
                         //muestra las rutinas disponibles
@@ -65,8 +65,8 @@ class JournalScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: Colors.indigo.shade400, width: 1),
                           ),
-                          margin: const EdgeInsets.symmetric(vertical: 8), 
-                          padding: const EdgeInsets.all(12),
+                          margin:  EdgeInsets.symmetric(vertical: 8), 
+                          padding: EdgeInsets.all(12),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -97,17 +97,17 @@ class JournalScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
     backgroundColor: Colors.yellow[400],
     foregroundColor: Colors.black,
-    child: const Icon(Icons.delete),
+    child: Icon(Icons.delete),
     onPressed: () {
       showModalBottomSheet(
     context: context,
     builder: (_) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(12),
       child: Column(
-        mainAxisSize: MainAxisSize.min, // ✅ Evita que ocupe toda la pantalla
+        mainAxisSize: MainAxisSize.min, 
         children: [
-          Expanded( // ✅ Mantiene la lista en la parte superior
+          Expanded( 
             child: ListView(
               children: dias.map((dia) {
                 final rutinas = rutinasAsignadas[dia] ?? [];
@@ -118,34 +118,34 @@ class JournalScreen extends StatelessWidget {
                           ...rutinas.map((r) => ListTile(
                                 title: Text(r.name),
                                 subtitle: Text('${r.type} - ${r.time} min'),
-                                trailing: const Icon(Icons.delete, color: Colors.red),
+                                trailing: Icon(Icons.delete, color: Colors.red),
                                 onTap: () {
                                   context.read<JournalProvider>().quitarRutina(dia, r);
                                   Navigator.pop(context);
                                 },
                               )),
-                          const Divider(),
+                          Divider(),
                           TextButton(
                             onPressed: () {
                               context.read<JournalProvider>().borrarTodasRutinas(dia);
                               Navigator.pop(context);
                             },
-                            child: const Text("Eliminar todas en este día", style: TextStyle(color: Colors.red)),
+                            child:Text("Eliminar todas en este día", style: TextStyle(color: Colors.red)),
                           ),
                         ],
                       )
-                    : const SizedBox();
+                    :SizedBox();
               }).toList(),
             ),
           ),
-          const Divider(), //Separador entre la lista y el botón
+           Divider(), //Separador entre la lista y el botón
           //Botón  abajo para eliminar las rutinas de Todos los días
           TextButton(
             onPressed: () {
               context.read<JournalProvider>().borrarTodasLasRutinasDeTodosLosDias();
               Navigator.pop(context);
             },
-            child: const Text(
+            child: Text(
               "Eliminar todas las rutinas",
               style: TextStyle(color: Colors.red, fontSize: 18, fontWeight: FontWeight.bold),
             ),

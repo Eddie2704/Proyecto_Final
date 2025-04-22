@@ -14,7 +14,7 @@ class WidgetTemporizador extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Colors.grey[550], 
             borderRadius: BorderRadius.circular(16),
@@ -31,20 +31,20 @@ class WidgetTemporizador extends StatelessWidget {
                   color: Colors.indigo[400], 
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
 
               // ✅ Botón dentro del Card
               ElevatedButton.icon(
                 onPressed: () => _showTimePicker(context),
-                icon: const Icon(Icons.timer),
-                label: const Text('Ajustar tiempo'),
+                icon:  Icon(Icons.timer),
+                label: Text('Ajustar tiempo'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent[400], 
                   foregroundColor: Colors.white, 
                 ),
               ),
 
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -52,11 +52,11 @@ class WidgetTemporizador extends StatelessWidget {
                     icon: Icon(temporizador.isPaused ? Icons.play_circle_fill : Icons.pause_circle_filled),
                     iconSize: 48,
                     color: Colors.indigo[400], 
-                    onPressed: temporizador.isPaused ? temporizador.iniciar : temporizador.pausar, // ✅ Ahora controla `isPaused`
+                    onPressed: temporizador.isPaused ? temporizador.iniciar : temporizador.pausar, 
                   ),
-                  const SizedBox(width: 20),
+                  SizedBox(width: 20),
                   IconButton(
-                    icon: const Icon(Icons.replay),
+                    icon: Icon(Icons.replay),
                     iconSize: 48,
                     color: Colors.orangeAccent, 
                     onPressed: temporizador.reiniciar,
@@ -77,7 +77,7 @@ class WidgetTemporizador extends StatelessWidget {
       context: context,
       builder: (_) {
         return Container(
-          padding: const EdgeInsets.all(16),
+          padding:  EdgeInsets.all(16),
           color: Colors.grey[850], 
           child: Column(
             children: [
@@ -103,9 +103,9 @@ class WidgetTemporizador extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orangeAccent),
-                child: const Text('Aceptar', style: TextStyle(color: Colors.black)), 
+                child:  Text('Aceptar', style: TextStyle(color: Colors.black)), 
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8),
             ],
           ),
         );

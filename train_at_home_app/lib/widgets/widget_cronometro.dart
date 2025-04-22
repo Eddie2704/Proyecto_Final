@@ -13,10 +13,11 @@ class WidgetCronometro extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.blueGrey[900], 
+            color: Colors.grey[550],
             borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: Colors.indigoAccent.shade400, width: 1),
           ),
           child: Column(
             children: [
@@ -25,22 +26,22 @@ class WidgetCronometro extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.bold,
-                  color: Colors.cyanAccent[400], 
+                  color: Colors.indigo[400],
                 ),
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
                     icon: Icon(cronometro.isRunning ? Icons.pause_circle_filled : Icons.play_circle_fill),
                     iconSize: 48,
-                    color: Colors.greenAccent[400], // 🔹 Botón verde neón
+                    color: Colors.indigo[400], 
                     onPressed: cronometro.isRunning ? cronometro.pausar : cronometro.iniciar,
                   ),
-                  const SizedBox(width: 20),
+                  SizedBox(width: 20),
                   IconButton(
-                    icon: const Icon(Icons.replay),
+                    icon: Icon(Icons.replay),
                     iconSize: 48,
                     color: Colors.orangeAccent[400], // 🔹 Botón naranja brillante
                     onPressed: cronometro.reiniciar,

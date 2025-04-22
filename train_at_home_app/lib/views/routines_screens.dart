@@ -4,7 +4,7 @@ import 'package:trainathomeapp/models/rutinas.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
 
 class RoutinesScreen extends StatelessWidget {
-  const RoutinesScreen({super.key});
+ const RoutinesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class RoutinesScreen extends StatelessWidget {
       ),
       // backgroundColor: Colors.grey[700],
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:EdgeInsets.all(16.0),
         child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 16.0,
             mainAxisSpacing: 16.0,
@@ -40,7 +40,7 @@ class RoutinesScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -52,21 +52,21 @@ class RoutinesScreen extends StatelessWidget {
                         // color: Colors.greenAccent[400],
                       ),
                     ),
-                    const SizedBox(height: 10),
+                  SizedBox(height: 10),
                     Text(
                       rutina.type, //tipo de rutina
-                      style: const TextStyle(
+                      style:TextStyle(
                         fontSize: 18,
                         color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                  SizedBox(height: 10),
                     // Tiempo de la rutina
                     Text(
                       'Duración: ${rutina.time} minutos',
-                      style: const TextStyle(fontSize: 16),
+                      style:TextStyle(fontSize: 16),
                     ),
-                    const SizedBox(height: 20),
+                  SizedBox(height: 20),
                     // Boton flotante para crear rutinas
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -75,7 +75,7 @@ class RoutinesScreen extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                           ),
-                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                        padding:EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                       ),
                       onPressed: () {
                         Navigator.pushNamed(

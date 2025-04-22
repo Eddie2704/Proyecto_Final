@@ -70,20 +70,20 @@ class ProfileScreenState extends State<ProfileScreen> {
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin:  EdgeInsets.symmetric(vertical: 10),
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding:  EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
                 Icon(icon, color: Theme.of(context).primaryColor),
-                const SizedBox(width: 10),
-                Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                SizedBox(width: 10),
+                Text(title, style:  TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10),
             ...children,
           ],
         ),
@@ -93,7 +93,7 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   Widget buildTextField(String label, TextEditingController controller, {TextInputType? type, List<TextInputFormatter>? inputFormatters}) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding:  EdgeInsets.only(bottom: 12),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -134,7 +134,7 @@ class ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: Text(
                 user?.displayName ?? 'Usuario',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:  TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -145,7 +145,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(16.0),
         child: ListView(
           children: [
             buildCard(
@@ -165,21 +165,21 @@ class ProfileScreenState extends State<ProfileScreen> {
               title: 'Sueño',
               children: [
                 SwitchListTile(
-                  title: const Text('Seguimiento del sueño'),
+                  title:  Text('Seguimiento del sueño'),
                   value: sleepTrackingEnabled,
                   onChanged: (value) => setState(() => sleepTrackingEnabled = value),
                 ),
                 if (sleepTrackingEnabled) ...[
                   ListTile(
-                    title: const Text('Hora de acostarse'),
+                    title:  Text('Hora de acostarse'),
                     subtitle: Text(bedTime != null ? bedTime!.format(context) : 'No seleccionada'),
-                    trailing: const Icon(Icons.access_time),
+                    trailing:  Icon(Icons.access_time),
                     onTap: () => selectTime(isBedTime: true),
                   ),
                   ListTile(
-                    title: const Text('Hora de despertarse'),
+                    title:  Text('Hora de despertarse'),
                     subtitle: Text(wakeTime != null ? wakeTime!.format(context) : 'No seleccionada'),
-                    trailing: const Icon(Icons.access_time),
+                    trailing:  Icon(Icons.access_time),
                     onTap: () => selectTime(isBedTime: false),
                   ),
                 ]
@@ -208,7 +208,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                   inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9.]'))],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
+                  padding:  EdgeInsets.only(bottom: 12),
                   child: InputDecorator(
                     decoration: InputDecoration(
                       labelText: 'Género',
@@ -235,19 +235,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             ElevatedButton.icon(
-              icon: const Icon(Icons.save),
+              icon:  Icon(Icons.save),
               onPressed: () async {
                 await saveUserData();
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Datos guardados')),
+                SnackBar(content: Text('Datos guardados')),
                 );
               },
-              label: const Text('Guardar'),
+              label:  Text('Guardar'),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                textStyle: const TextStyle(fontSize: 16),
+                padding:  EdgeInsets.symmetric(vertical: 14),
+                textStyle:  TextStyle(fontSize: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
             ),

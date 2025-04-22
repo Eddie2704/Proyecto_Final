@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:trainathomeapp/providers/rutinas_provider.dart';
 
 class CreateRoutineScreen extends StatefulWidget {
-  const CreateRoutineScreen({super.key});
+   const CreateRoutineScreen({super.key});
 
   @override
   CreateRoutineScreenState createState() => CreateRoutineScreenState();
@@ -22,9 +22,9 @@ class CreateRoutineScreenState extends State<CreateRoutineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Crear Nueva Rutina")),
+      appBar: AppBar(title:  Text("Crear Nueva Rutina")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -32,7 +32,7 @@ class CreateRoutineScreenState extends State<CreateRoutineScreen> {
             children: [
               
               DropdownButtonFormField<Map<String, dynamic>>(
-                decoration: const InputDecoration(labelText: 'Seleccionar Rutina Base'),
+                decoration:  InputDecoration(labelText: 'Seleccionar Rutina Base'),
                 items: rutinasProvider.rutinas.map((rutina) {
                   return DropdownMenuItem(
                     value: rutina,
@@ -50,30 +50,30 @@ class CreateRoutineScreenState extends State<CreateRoutineScreen> {
                   }
                 },
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               TextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(labelText: 'Nombre de la Rutina'),
+                decoration:  InputDecoration(labelText: 'Nombre de la Rutina'),
                 validator: (value) => value == null || value.isEmpty ? 'Requerido' : null,
               ),
               TextFormField(
                 controller: _typeController,
-                decoration: const InputDecoration(labelText: 'Tipo de Rutina'),
+                decoration:  InputDecoration(labelText: 'Tipo de Rutina'),
                 validator: (value) => value == null || value.isEmpty ? 'Requerido' : null,
               ),
               TextFormField(
                 controller: _timeController,
-                decoration: const InputDecoration(labelText: 'Duración (minutos)'),
+                decoration:  InputDecoration(labelText: 'Duración (minutos)'),
                 keyboardType: TextInputType.number,
                 validator: (value) => value == null || value.isEmpty ? 'Requerido' : null,
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ElevatedButton.icon(
-                icon: const Icon(Icons.save),
-                label: const Text('Guardar'),
+                icon:  Icon(Icons.save),
+                label:  Text('Guardar'),
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    textStyle: const TextStyle(fontSize: 16),
+                    padding:  EdgeInsets.symmetric(vertical: 14),
+                    textStyle:  TextStyle(fontSize: 16),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                   onPressed: () async {
@@ -90,7 +90,7 @@ class CreateRoutineScreenState extends State<CreateRoutineScreen> {
                         });
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Rutina guardada exitosamente')),
+                          SnackBar(content: Text('Rutina guardada exitosamente')),
                         );
                         Navigator.pop(context);
                       } catch (e) {

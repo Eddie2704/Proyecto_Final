@@ -25,7 +25,7 @@ class ProgressScreenState extends State<ProgressScreen> {
 @override
 void initState() {
   super.initState();
-  _confettiController = ConfettiController(duration: const Duration(seconds: 5));
+  _confettiController = ConfettiController(duration: Duration(seconds: 5));
 
   final journal = Provider.of<JournalProvider>(context, listen: false);
   rutinasHoy = journal.rutinasAsignadas[_getToday()] ?? [];
@@ -64,13 +64,13 @@ void initState() {
         children: [
           Column(
             children: [
-              const SizedBox(height: 8),
+              SizedBox(height: 8),
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 child: Column(
                   children: [
-                    const WidgetTemporizador(),
-                    const SizedBox(height: 8),
+                    WidgetTemporizador(),
+                    SizedBox(height: 8),
                      //boton no necesario
                     ElevatedButton.icon(
         onPressed: () {
@@ -80,8 +80,8 @@ void initState() {
             _mostrarMensajeFinalizacion();
           });
         },
-        icon: const Icon(Icons.celebration),
-        label: const Text('Marcar todas como completadas'),
+        icon: Icon(Icons.celebration),
+        label: Text('Marcar todas como completadas'),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.greenAccent[400],
           foregroundColor: Colors.black,
@@ -91,17 +91,17 @@ void initState() {
                   ],
                 ),
               ),
-              const SizedBox(height: 8),
+              SizedBox(height: 8),
               // ✅ Lista de rutinas del día con estado de cumplimiento
               Expanded(
                 child: rutinasHoy.isNotEmpty
                     ? ListView.builder(
-                        padding: const EdgeInsets.all(12),
+                        padding: EdgeInsets.all(12),
                         itemCount: rutinasHoy.length,
                         itemBuilder: (_, index) {
                           final rutina = rutinasHoy[index];
                           return Card(
-                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            margin: EdgeInsets.symmetric(vertical: 8),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),
                             side: BorderSide(color: Colors.indigo.shade400, width: 1),),
                             color: Colors.grey[550],
@@ -112,13 +112,13 @@ void initState() {
                               ),
                               subtitle: Text('${rutina.type} - ${rutina.time} min', style: TextStyle(color: Colors.grey[700])),
                               trailing: rutinaCompletada[index]
-                                  ? const Icon(Icons.check_circle, color: Colors.greenAccent, size: 28)
-                                  : const Icon(Icons.timer, color: Colors.orangeAccent, size: 28),
+                                  ? Icon(Icons.check_circle, color: Colors.greenAccent, size: 28)
+                                  : Icon(Icons.timer, color: Colors.orangeAccent, size: 28),
                             ),
                           );
                         },
                       )
-                    : const Center(
+                    : Center(
                         child: Text(
                           'No hay rutinas planificadas para hoy',
                           style: TextStyle(fontSize: 18, color: Colors.grey),
@@ -144,9 +144,6 @@ void initState() {
     );
   }
 
-  
-
-
   //Funciones
   void _marcarRutinaComoCompletada() async{
     if (rutinaActualIndex < rutinasHoy.length) {
@@ -170,12 +167,12 @@ void initState() {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('¡Rutinas completadas!'),
-        content: const Text('Has finalizado todas las rutinas del día. 🎉'),
+        title: Text('¡Rutinas completadas!'),
+        content: Text('Has finalizado todas las rutinas del día. 🎉'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Aceptar'),
+            child: Text('Aceptar'),
           ),
         ],
       ),
